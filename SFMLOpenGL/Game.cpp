@@ -2,10 +2,11 @@
 
 bool updatable = false;
 
-gpp::Vector3 v3;
 
-Game::Game() : window(VideoMode(800, 600), "OpenGL Cube")
+
+Game::Game() : window(sf::VideoMode(800, 600), "OpenGL Cube")
 {
+	
 	index = glGenLists(1);
 }
 
@@ -16,7 +17,7 @@ void Game::run()
 
 	initialize();
 
-	Event event;
+	sf::Event event;
 
 	while (isRunning) {
 
@@ -24,7 +25,7 @@ void Game::run()
 
 		while (window.pollEvent(event))
 		{
-			if (event.type == Event::Closed)
+			if (event.type == sf::Event::Closed)
 			{
 				isRunning = false;
 			}
@@ -52,88 +53,95 @@ void Game::initialize()
 	glNewList(index, GL_COMPILE);
 	glBegin(GL_TRIANGLES);
 	{
-		//Front Face
+
+
+		////Front Face
 		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(v3.getX(), 1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glVertex3f(points[2].getX(), points[2].getY(), points[2].getZ());
+		glVertex3f(points[3].getX(), points[3].getY(), points[3].getZ());
+		glVertex3f(points[0].getX(), points[0].getY(), points[0].getZ());
 
-		glVertex3f(1.0f, -1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
-		glVertex3f(v3.getX(), 1.0f, -5.0f);
 
-		//Back Face
+		glVertex3f(points[0].getX(), points[0].getY(), points[0].getZ());
+		glVertex3f(points[1].getX(), points[1].getY(), points[1].getZ());
+		glVertex3f(points[2].getX(), points[2].getY(), points[2].getZ());
+
+
+
+		////Back Face
+
 		glColor3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -15.0f);
 
-		glVertex3f(-1.0f, 1.0f, -15.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
+		glVertex3f(points[6].getX(), points[6].getY(), points[6].getZ());
+		glVertex3f(points[7].getX(), points[7].getY(), points[7].getZ());
+		glVertex3f(points[4].getX(), points[4].getY(), points[4].getZ());
 
+		glVertex3f(points[4].getX(), points[4].getY(), points[4].getZ());
+		glVertex3f(points[5].getX(), points[5].getY(), points[5].getZ());
+		glVertex3f(points[6].getX(), points[6].getY(), points[6].getZ());
+	
 
-		//Side n0 1
+		////Side n0 1
 		glColor3f(0.8f, 0.498039f, 0.196078f);//GOLD FACE   
-		glVertex3f(v3.getX(), 1.0f, -5.0f);
+		glVertex3f(points[2].getX(), points[2].getY(), points[2].getZ());
 		glColor3f(1.0f, 0.0f, 0.0f);//o FACE  
-		glVertex3f(-1.0f, 1.0f, -15.0f);
+		glVertex3f(points[7].getX(), points[7].getY(), points[7].getZ());
 		glColor3f(1.0f, 0.498039f, 0.0f);//COARL FACE  
-		glVertex3f(1.0f, 1.0f, -15.0f);
+		glVertex3f(points[6].getX(), points[6].getY(), points[6].getZ());
 
 		glColor3f(1.0f, 0.0f, 0.0f);//o FACE  
-		glVertex3f(-1.0f, 1.0f, -15.0f);
+		glVertex3f(points[7].getX(), points[7].getY(), points[7].getZ());
 		glColor3f(0.8f, 0.498039f, 0.196078f);//RED FACE  
-		glVertex3f(v3.getX(), 1.0f, -5.0f);
+		glVertex3f(points[2].getX(), points[2].getY(), points[2].getZ());
 		glColor3f(1.0f, 0.498039f, 0.0f);//CORAL FACE  
-		glVertex3f(-1.0f, 1.0f, -5.0f);
+		glVertex3f(points[3].getX(), points[3].getY(), points[3].getZ());
 
-		//Side n0 2
+		////Side n0 2
 		glColor3f(0.85f, 0.85f, 0.95f);//YELLOW FACE  
-		glVertex3f(v3.getX(), 1.0f, -5.0f);
+		glVertex3f(points[2].getX(), points[2].getY(), points[2].getZ());
 		glColor3f(1.00f, 0.43f, 0.78f);//dr FACE
-		glVertex3f(1.0f, 1.0f, -15.0f);
+		glVertex3f(points[6].getX(), points[6].getY(), points[6].getZ());
 		glColor3f(0.560784f, 0.737255f, 0.560784f);//YELLOW FACE
-		glVertex3f(1.0f, -1.0f, -15.0f);
+		glVertex3f(points[5].getX(), points[5].getY(), points[5].getZ());
 
 		glColor3f(0.85f, 0.85f, 0.95f);//YELLOW FACE  
-		glVertex3f(v3.getX(), 1.0f, -5.0f);
+		glVertex3f(points[2].getX(), points[2].getY(), points[2].getZ());
 		glColor3f(0.560784f, 0.737255f, 0.560784f);//YELLOW FACE
-		glVertex3f(1.0f, -1.0f, -15.0f);
+		glVertex3f(points[5].getX(), points[5].getY(), points[5].getZ());
 		glColor3f(1.00f, 0.43f, 0.78f);//dr FACE
-		glVertex3f(1.0f, -1.0f, -5.0f);
+		glVertex3f(points[1].getX(), points[1].getY(), points[1].getZ());
 
-		//Side n0 3
-		glColor3f(0.0f, 0.0f, 1.0f);//PURPLE FACE  
-		glVertex3f(1.0f, -1.0f, -5.0f);
+		////Side n0 3
+		glColor3f(0.0f, 0.0f, 1.0f);//PURPLE FACE 
+		glVertex3f(points[1].getX(), points[1].getY(), points[1].getZ());
 		glColor3f(1.0f, 0.0f, 1.0f);//PURPLE FACE  
-		glVertex3f(1.0f, -1.0f, -15.0f);
+		glVertex3f(points[5].getX(), points[5].getY(), points[5].getZ());
 		glColor3f(0.22f, 0.69f, 0.87f);//PURPLE FACE  
-		glVertex3f(-1.0f, -1.0f, -15.0f);
+		glVertex3f(points[4].getX(), points[4].getY(), points[4].getZ());
 
 		glColor3f(0.0f, 0.0f, 1.0f);//PURPLE FACE  
-		glVertex3f(1.0f, -1.0f, -5.0f);
+		glVertex3f(points[1].getX(), points[1].getY(), points[1].getZ());
 		glColor3f(0.22f, 0.69f, 0.87f);//PURPLE FACE  
-		glVertex3f(-1.0f, -1.0f, -15.0f);
+		glVertex3f(points[4].getX(), points[4].getY(), points[4].getZ());
 		glColor3f(1.0f, 0.0f, 1.0f);//PURPLE FACE  
-		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glVertex3f(points[0].getX(), points[0].getY(), points[0].getZ());
 
 
 
-		//Side n0 4
+		////Side n0 4
 		glColor3f(1.0f, 1.0f, 1.0f);//WHITE FACE  
-		glVertex3f(-1.0f, -1.0f, -15.0f);
+		glVertex3f(points[4].getX(), points[4].getY(), points[4].getZ());
 		glColor3f(0.0f, 20.0f, 55.0f);//CYAN FACE  
-		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glVertex3f(points[0].getX(), points[0].getY(), points[0].getZ());
 		glColor3f(1.0f, 0.0f, 1.0f);//PURPLE FACE  
-		glVertex3f(-1.0f, 1.0f, -15.0f);
+		glVertex3f(points[7].getX(), points[7].getY(), points[7].getZ());
 
 		glColor3f(0.0f, 20.0f, 55.0f);//CYAN FACE  
-		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glVertex3f(points[0].getX(), points[0].getY(), points[0].getZ());
 		glColor3f(1.0f, 0.0f, 1.0f);//PURPLE FACE 
-		glVertex3f(-1.0f, 1.0f, -15.0f);
+		glVertex3f(points[7].getX(), points[7].getY(), points[7].getZ());
 		glColor3f(1.0f, 1.0f, 1.0f);//WHITE FACE  
-		glVertex3f(-1.0f, 1.0f, -5.0f);
+		glVertex3f(points[3].getX(), points[3].getY(), points[3].getZ());
 
 	}
 	glEnd();
@@ -167,6 +175,9 @@ void Game::update()
 	}
 
 	cout << "Update up" << endl;
+
+
+
 }
 
 void Game::draw()

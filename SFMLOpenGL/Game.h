@@ -4,12 +4,14 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
-#include <Vector3.h>
+#include "Vector3.h"
+#include"Matrix3.h"
+#include <array>
 
 
 using namespace std;
-using namespace sf;
-using namespace gpp;
+
+
 
 class Game
 {
@@ -18,16 +20,42 @@ public:
 	~Game();
 	void run();
 private:
-	Window window;
+	sf::Window window;
 	bool isRunning = false;
 	void initialize();
 	void update();
 	void draw();
 	void unload();
-
+	bool checkFace(int t_faceIndex);
+	void resetCubeTranslations();
 	GLuint index;
-	Clock clock;
-	Time elapsed;
+	sf::Clock clock;
+	sf::Time elapsed;
 
 	float rotationAngle = 0.0f;
+
+	Vector3 v3{ 1,1,1 };
+	Vector3 points[8] { {-1.0f, -1.0f, -5.0f},
+
+						{1.0f, -1.0f, -5.0f},
+
+						{1.0f, 1.0f, -5.0f},
+
+						{-1.0f, 1.0f, -5.0f},
+
+
+
+						{-1.0f, -1.0f, -15.0f},
+
+						{1.0f, -1.0f, -15.0f},
+
+						{1.0f, 1.0f, -15.0f},
+
+						{-1.0f, 1.0f, -15.0f}
+
+	};
+
+	
+	float m_scale =100.0f;
+	Vector3 m_rotations{0.0,0.0,0.0};
 };
