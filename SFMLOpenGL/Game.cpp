@@ -9,7 +9,7 @@ Game::Game() : window(VideoMode(800, 600), "OpenGL Cube")
 	index = glGenLists(1);
 }
 
-Game::~Game(){}
+Game::~Game() {}
 
 void Game::run()
 {
@@ -18,7 +18,7 @@ void Game::run()
 
 	Event event;
 
-	while (isRunning){
+	while (isRunning) {
 
 		cout << "Game running..." << endl;
 
@@ -50,23 +50,91 @@ void Game::initialize()
 	// Initalizes and Compiled to GPU
 	// https://www.opengl.org/sdk/docs/man2/xhtml/glNewList.xml
 	glNewList(index, GL_COMPILE);
-	glBegin(GL_QUADS);
+	glBegin(GL_TRIANGLES);
 	{
 		//Front Face
 		glColor3f(0.0f, 0.0f, 1.0f);
 		glVertex3f(v3.getX(), 1.0f, -5.0f);
 		glVertex3f(-1.0f, 1.0f, -5.0f);
 		glVertex3f(-1.0f, -1.0f, -5.0f);
+
 		glVertex3f(1.0f, -1.0f, -5.0f);
+		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glVertex3f(v3.getX(), 1.0f, -5.0f);
 
 		//Back Face
 		glColor3f(0.0f, 1.0f, 0.0f);
 		glVertex3f(1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, 1.0f, -15.0f);
 		glVertex3f(-1.0f, -1.0f, -15.0f);
 		glVertex3f(1.0f, -1.0f, -15.0f);
 
-		//Complete the faces of the Cube
+		glVertex3f(-1.0f, 1.0f, -15.0f);
+		glVertex3f(1.0f, 1.0f, -15.0f);
+		glVertex3f(-1.0f, -1.0f, -15.0f);
+
+
+		//Side n0 1
+		glColor3f(0.8f, 0.498039f, 0.196078f);//GOLD FACE   
+		glVertex3f(v3.getX(), 1.0f, -5.0f);
+		glColor3f(1.0f, 0.0f, 0.0f);//o FACE  
+		glVertex3f(-1.0f, 1.0f, -15.0f);
+		glColor3f(1.0f, 0.498039f, 0.0f);//COARL FACE  
+		glVertex3f(1.0f, 1.0f, -15.0f);
+
+		glColor3f(1.0f, 0.0f, 0.0f);//o FACE  
+		glVertex3f(-1.0f, 1.0f, -15.0f);
+		glColor3f(0.8f, 0.498039f, 0.196078f);//RED FACE  
+		glVertex3f(v3.getX(), 1.0f, -5.0f);
+		glColor3f(1.0f, 0.498039f, 0.0f);//CORAL FACE  
+		glVertex3f(-1.0f, 1.0f, -5.0f);
+
+		//Side n0 2
+		glColor3f(0.85f, 0.85f, 0.95f);//YELLOW FACE  
+		glVertex3f(v3.getX(), 1.0f, -5.0f);
+		glColor3f(1.00f, 0.43f, 0.78f);//dr FACE
+		glVertex3f(1.0f, 1.0f, -15.0f);
+		glColor3f(0.560784f, 0.737255f, 0.560784f);//YELLOW FACE
+		glVertex3f(1.0f, -1.0f, -15.0f);
+
+		glColor3f(0.85f, 0.85f, 0.95f);//YELLOW FACE  
+		glVertex3f(v3.getX(), 1.0f, -5.0f);
+		glColor3f(0.560784f, 0.737255f, 0.560784f);//YELLOW FACE
+		glVertex3f(1.0f, -1.0f, -15.0f);
+		glColor3f(1.00f, 0.43f, 0.78f);//dr FACE
+		glVertex3f(1.0f, -1.0f, -5.0f);
+
+		//Side n0 3
+		glColor3f(0.0f, 0.0f, 1.0f);//PURPLE FACE  
+		glVertex3f(1.0f, -1.0f, -5.0f);
+		glColor3f(1.0f, 0.0f, 1.0f);//PURPLE FACE  
+		glVertex3f(1.0f, -1.0f, -15.0f);
+		glColor3f(0.22f, 0.69f, 0.87f);//PURPLE FACE  
+		glVertex3f(-1.0f, -1.0f, -15.0f);
+
+		glColor3f(0.0f, 0.0f, 1.0f);//PURPLE FACE  
+		glVertex3f(1.0f, -1.0f, -5.0f);
+		glColor3f(0.22f, 0.69f, 0.87f);//PURPLE FACE  
+		glVertex3f(-1.0f, -1.0f, -15.0f);
+		glColor3f(1.0f, 0.0f, 1.0f);//PURPLE FACE  
+		glVertex3f(-1.0f, -1.0f, -5.0f);
+
+
+
+		//Side n0 4
+		glColor3f(1.0f, 1.0f, 1.0f);//WHITE FACE  
+		glVertex3f(-1.0f, -1.0f, -15.0f);
+		glColor3f(0.0f, 20.0f, 55.0f);//CYAN FACE  
+		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glColor3f(1.0f, 0.0f, 1.0f);//PURPLE FACE  
+		glVertex3f(-1.0f, 1.0f, -15.0f);
+
+		glColor3f(0.0f, 20.0f, 55.0f);//CYAN FACE  
+		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glColor3f(1.0f, 0.0f, 1.0f);//PURPLE FACE 
+		glVertex3f(-1.0f, 1.0f, -15.0f);
+		glColor3f(1.0f, 1.0f, 1.0f);//WHITE FACE  
+		glVertex3f(-1.0f, 1.0f, -5.0f);
+
 	}
 	glEnd();
 	glEndList();
@@ -97,7 +165,7 @@ void Game::update()
 			rotationAngle -= 360.0f;
 		}
 	}
-	
+
 	cout << "Update up" << endl;
 }
 
@@ -109,7 +177,7 @@ void Game::draw()
 
 	cout << "Drawing Cube " << endl;
 	glLoadIdentity();
-	glRotatef(rotationAngle, 0, 0, 1); // Rotates the camera on Y Axis
+	//glRotatef(rotationAngle, 0, 0, 1); // Rotates the camera on Y Axis
 
 	glCallList(1);
 
