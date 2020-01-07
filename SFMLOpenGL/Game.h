@@ -26,8 +26,7 @@ private:
 	void update();
 	void draw();
 	void unload();
-	bool checkFace(int t_faceIndex);
-	void resetCubeTranslations();
+	void processEvents(sf::Event);
 	GLuint index;
 	sf::Clock clock;
 	sf::Time elapsed;
@@ -35,27 +34,24 @@ private:
 	float rotationAngle = 0.0f;
 
 	Vector3 v3{ 1,1,1 };
-	Vector3 points[8] { {-1.0f, -1.0f, -5.0f},
+	Vector3 points[8] { {-1.0f, -1.0f, 1.0f}, // cube vertices 
 
-						{1.0f, -1.0f, -5.0f},
+						{1.0f, -1.0f, 1.0f},
 
-						{1.0f, 1.0f, -5.0f},
+						{1.0f, 1.0f, 1.0f},
 
-						{-1.0f, 1.0f, -5.0f},
+						{-1.0f, 1.0f, 1.0f},
 
 
 
-						{-1.0f, -1.0f, -15.0f},
+						{-1.0f, -1.0f, -1.0f},
 
-						{1.0f, -1.0f, -15.0f},
+						{1.0f, -1.0f, -1.0f},
 
-						{1.0f, 1.0f, -15.0f},
+						{1.0f, 1.0f, -1.0f},
 
-						{-1.0f, 1.0f, -15.0f}
+						{-1.0f, 1.0f, -1.0f}
 
 	};
-
-	
-	float m_scale =100.0f;
-	Vector3 m_rotations{0.0,0.0,0.0};
+	float m_angle= 2.0;
 };

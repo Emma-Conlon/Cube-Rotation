@@ -116,9 +116,10 @@ double Matrix3::Determinant(Matrix3 M1)
 	return  M1.A11 * M1.A22 * M1.A33 - M1.A11 * M1.A32 * M1.A23 + M1.A21 * M1.A32 * M1.A13 - M1.A31 * M1.A22 * M1.A13 + M1.A31 * M1.A12 * M1.A23 - M1.A21 * M1.A12 * M1.A33;
 }
 
-Vector3 Matrix3::Row(int i)
+Vector3 Matrix3::Row(float i)
 {
-	switch (i)
+	int e = i;
+	switch (e)
 	{
 	case 0:
 		return  { A11, A12, A13 };
@@ -130,9 +131,10 @@ Vector3 Matrix3::Row(int i)
 	}
 }
 
-Vector3 Matrix3::Column(int i)
+Vector3 Matrix3::Column(float i)
 {
-	switch (i)
+	int e = i;
+	switch (e)
 	{
 	case 0:
 		return  { A11, A21, A31 };
@@ -171,7 +173,7 @@ Matrix3 Matrix3::Inverse(Matrix3 M1)
 
 }
 
-Matrix3 Matrix3::Rotation(int _angle)
+Matrix3 Matrix3::Rotation(float _angle)
 {
 	double PI{ 3.141 };
 	double radians = PI / 180 * _angle;
@@ -189,7 +191,7 @@ Matrix3 Matrix3::Rotation(int _angle)
 	return answer;
 }
 
-Matrix3 Matrix3::Translate(int dx, int dy)
+Matrix3 Matrix3::Translate(float dx, float dy)
 {
 	Matrix3 answer = Matrix3();
 	answer.A11 = 1;
@@ -205,7 +207,7 @@ Matrix3 Matrix3::Translate(int dx, int dy)
 	return answer;
 }
 
-Matrix3 Matrix3::Scale(int dx, int dy)
+Matrix3 Matrix3::Scale(float dx, float dy)
 {
 	Matrix3 answer =  Matrix3();
 	answer.A11 = (double)dx / 100;
@@ -227,7 +229,7 @@ Matrix3 Matrix3::operator-()
 	return Matrix3{*this * -1};
 }
 
-Matrix3 Matrix3::RotationX(int _angle)
+Matrix3 Matrix3::RotationX(float _angle)
 {
 	double PI{ 3.141 };
 	double radians = PI / 180 * _angle;
@@ -245,7 +247,7 @@ Matrix3 Matrix3::RotationX(int _angle)
 	return answer;
 }
 
-Matrix3 Matrix3::RotationY(int _angle)
+Matrix3 Matrix3::RotationY(float _angle)
 {
 	double PI{ 3.141 };
 	double radians = PI / 180 * _angle;
@@ -263,7 +265,7 @@ Matrix3 Matrix3::RotationY(int _angle)
 	return answer;
 }
 
-Matrix3 Matrix3::RotationZ(int _angle)
+Matrix3 Matrix3::RotationZ(float _angle)
 {
 	double PI{ 3.141 };
 	double radians = PI / 180 * _angle;
@@ -281,7 +283,7 @@ Matrix3 Matrix3::RotationZ(int _angle)
 	return answer;
 }
 
-Matrix3 Matrix3::Scale3D(int dx)
+Matrix3 Matrix3::Scale3D(float dx)
 {
 	Matrix3 answer =  Matrix3();
 	answer.A11 = (double)dx / 100;
